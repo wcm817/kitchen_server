@@ -70,7 +70,10 @@ exports.loginHandler = (req, res) => {
     res.output({
       code: 0,
       msg: '登录成功',
-      data: "Bearer " + tokenStr
+      data: {
+        token: "Bearer " + tokenStr,
+        username
+      }
     });
   });
 }

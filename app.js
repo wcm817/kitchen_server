@@ -42,7 +42,7 @@ app.use(
 const router = require('./router/index.js');
 app.use(router);
 
-// 所有路由调用下面的错误中间件
+// 所有路由调用下面的错误中间件 
 app.use((err, req, res, next) => {
   // 数据校验检测出的错误
   if (err instanceof Joi.ValidationError) {

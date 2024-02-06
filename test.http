@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ###
-@token = {{login_app.response.body.$.data}}
+@token = {{login_app.response.body.$.data.token}}
 
 ###
 POST {{url}}/addComment
