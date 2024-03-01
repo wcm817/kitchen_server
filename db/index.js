@@ -6,7 +6,7 @@ const db = mysql.createPool({
   host: "127.0.0.1", // 数据库的IP地址(本地的或者是云服务器的都可以)
   port: '3306', // mysql默认端口是3306
   user: 'root', // mysql客户端用户名
-  password: '123456', // mysql客户端密码
+  password: 'root', // mysql客户端密码
   database: 'kitchen' // 要连接的数据库名称
 });
 

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // 注册、登录处理函数
-const { registerHandler, loginHandler } = require('../router_handler/login.js');
+const { registerHandler, loginHandler, logoutHandler } = require('../router_handler/login.js');
 // 留言处理函数
 const { commentHanlder } = require('../router_handler/comment.js');
 
@@ -16,8 +16,17 @@ const expressJoi = require('@escook/express-joi');
 router.post('/register', expressJoi(login_user_rules), registerHandler);
 // 登录路由
 router.post('/login', expressJoi(login_user_rules), loginHandler);
+// 登出路由
+router.get('/logout', logoutHandler);
 // 留言路由
 router.post('/addComment', expressJoi(comment_rules), commentHanlder);
+// 测试
+router.get('/test', (req, res) => {
+  res.output({
+    code: 0,
+    data: 'ok'
+  })
+})
 
 
 module.exports = router;

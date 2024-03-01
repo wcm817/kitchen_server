@@ -8,12 +8,12 @@ const app = express();
 const Joi = require('joi'); // 请求的数据校验
 const { expressjwt: jwt } = require('express-jwt'); // 解析token
 const cors = require('cors')(); // 跨域
+
 app.use(cors);
 // 解析 Content-Type: application/json类型 post请求的body参数
 app.use(express.json());
 // 配置解析表单数据的中间件  内置中间件，只能解析application/x-www-form-urlencoded格式的数据
 app.use(express.urlencoded({ extended: false }));
-
 
 // 封装res.send(), 必须在路由前封装
 app.use((req, res, next) => {

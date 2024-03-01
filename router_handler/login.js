@@ -37,7 +37,7 @@ exports.registerHandler = (req, res) => {
   });
 }
 
-// 登录助理函数 并导出
+// 登录处理函数函数 并导出
 exports.loginHandler = (req, res) => {
   const { username, password } = req.body;
   const sql = 'select * from user_login where username=?';
@@ -59,6 +59,8 @@ exports.loginHandler = (req, res) => {
       ...result[0],
       password: ''
     };
+
+    // token加密并设置加密过期时间
     const tokenStr = jwt.sign(
       user,
       'secret123456', // 密钥
@@ -66,14 +68,22 @@ exports.loginHandler = (req, res) => {
         expiresIn: 3600 * 24 // 过期时间
       }
     );
-    // token客户端不能直接用，需要在前面加 'Bearer '，返回的时候将这个加上，前端就能直接用了。
+
+    // 设置cookie
+    res.cookie("kitchen_token", tokenStr, { maxAge: 60000000, httpOnly: false });
+
     res.output({
       code: 0,
       msg: '登录成功',
       data: {
-        token: "Bearer " + tokenStr,
+        token: tokenStr,
         username
       }
     });
   });
+}
+
+// 退出处理函数
+exports.logoutHandler = (req, res) => {
+
 }
