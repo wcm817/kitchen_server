@@ -85,5 +85,9 @@ exports.loginHandler = (req, res) => {
 
 // 退出处理函数
 exports.logoutHandler = (req, res) => {
-
+  res.clearCookie('kitchen_token');
+  res.output({
+    code: 0,
+    msg: '退出成功'
+  })
 }

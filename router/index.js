@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// 注册、登录处理函数
+// 注册、登录、退出处理函数
 const { registerHandler, loginHandler, logoutHandler } = require('../router_handler/login.js');
 // 留言处理函数
 const { commentHanlder } = require('../router_handler/comment.js');
